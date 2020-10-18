@@ -17,7 +17,7 @@ If you didn't use the MongoDB provided by the docker-compose, you may need to ch
 ## Check installation
 
 - Run the application (`mvn spring-boot:run` or with IDE) and navigate to <http://localhost:8080/lecture00/findAll> => **You should see a List of 5 Books**
-- Run the test (`mvn test`) => there should be one green test
+- Run the tests (`mvn test` or with IDE) => there should be one green test
 
 # Workshop
 

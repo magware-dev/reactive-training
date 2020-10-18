@@ -1,0 +1,12 @@
+server:
+  port: 8080
+
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: reactive-training
+      authenticationDatabase: admin
+      username: root
+      password: root

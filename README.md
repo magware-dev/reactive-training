@@ -14,6 +14,8 @@ You can either install it normally on your machine following the [official instr
 
 If you didn't use the MongoDB provided by the docker-compose, you may need to change the configuration in `src/main/resources/application.yml` for the application to work properly.
 
+> Note: the tests run with an embedded MongoDB. So if you are fine with not running the application and just running the tests you don't need to install MongoDB.
+
 ## Check installation
 
 - Run the application (`mvn spring-boot:run` or with IDE) and navigate to <http://localhost:8080/lecture00/findAll> => **You should see a List of 5 Books**

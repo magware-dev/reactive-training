@@ -25,6 +25,4 @@ If you didn't use the MongoDB provided by the docker-compose, you may need to ch
 - Every lecture has a branch which contains one or more tasks to complete
 - During the workshop we will checkout a lecture-branch, solve the tasks and move on to the next lecture
 
-> The master branch contains the initial lecture 00 which does not contain any tasks. lecture 00 is used to check the initial setup.
-
 Have fun!

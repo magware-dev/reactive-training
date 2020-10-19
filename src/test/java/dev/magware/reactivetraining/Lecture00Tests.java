@@ -2,6 +2,7 @@ package dev.magware.reactivetraining;
 
 import dev.magware.reactivetraining.model.Book;
 import dev.magware.reactivetraining.model.BookRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
@@ -27,6 +28,15 @@ public class Lecture00Tests {
         new Book("id2", "book2", "isbn2")
     );
 
+    @BeforeEach
+    void beforeEach() {
+        // delete and insert test books
+        this.bookRepository
+            .deleteAll()
+            .thenMany(this.bookRepository.saveAll(this.books))
+            .blockLast();
+    }
+
     @Test
     public void testFindAll() {
         // delete and insert test books
@@ -47,6 +57,23 @@ public class Lecture00Tests {
         // check response
         StepVerifier.create(response)
             .expectNext(this.books.toArray(new Book[0]))
+            .verifyComplete();
+    }
+
+    @Test
+    public void testFindOne() {
+        // make request
+        Flux<Book> response = this.webTestClient
+            .get()
+            .uri("/lecture00/findOne/id1")
+            .exchange()
+            .expectStatus().isOk()
+            .returnResult(Book.class)
+            .getResponseBody();
+
+        // check response
+        StepVerifier.create(response)
+            .expectNext(this.books.get(0))
             .verifyComplete();
     }
 

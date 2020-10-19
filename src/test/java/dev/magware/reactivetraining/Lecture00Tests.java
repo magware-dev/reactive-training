@@ -59,11 +59,11 @@ public class Lecture00Tests {
         // make request
         Flux<Book> response = this.webTestClient
             .get()
-            .uri("/lecture00/findOne/id1")
+                .uri("/lecture00/findOne/id1")
             .exchange()
-            .expectStatus().isOk()
-            .returnResult(Book.class)
-            .getResponseBody();
+                .expectStatus().isOk()
+                .returnResult(Book.class)
+                .getResponseBody();
 
         // check response
         StepVerifier.create(response)

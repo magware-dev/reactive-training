@@ -39,12 +39,6 @@ public class Lecture00Tests {
 
     @Test
     public void testFindAll() {
-        // delete and insert test books
-        this.bookRepository
-            .deleteAll()
-            .thenMany(this.bookRepository.saveAll(this.books))
-            .blockLast();
-
         // make request
         Flux<Book> response = this.webTestClient
             .get()

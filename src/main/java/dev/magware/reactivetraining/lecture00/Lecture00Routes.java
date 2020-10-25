@@ -17,7 +17,7 @@ public class Lecture00Routes {
     }
 
     @Bean
-    public RouterFunction<ServerResponse> findAll() {
+    public RouterFunction<ServerResponse> lecture00Routes() {
         return RouterFunctions
             .route(
                 RequestPredicates.GET("/lecture00/findAll"),

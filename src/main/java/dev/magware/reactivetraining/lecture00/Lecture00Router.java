@@ -22,6 +22,9 @@ public class Lecture00Router {
             .route(
                 RequestPredicates.GET("/lecture00/findAll"),
                 this.lecture00Handlers::findAll
+            ).andRoute(
+                RequestPredicates.GET("/lecture00/findOne/{id}"),
+                this.lecture00Handlers::findOne
             );
     }
     

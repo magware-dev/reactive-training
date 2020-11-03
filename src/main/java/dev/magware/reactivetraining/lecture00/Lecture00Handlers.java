@@ -23,4 +23,11 @@ public class Lecture00Handlers {
             .body(this.bookRepository.findAll(), Book.class);
     }
 
+    public Mono<ServerResponse> findOne(ServerRequest request) {
+        String id = request.pathVariable("id");
+        return ServerResponse.ok()
+            .contentType(MediaType.APPLICATION_JSON)
+            .body(this.bookRepository.findById(id), Book.class);
+    }
+
 }

@@ -20,16 +20,16 @@ public class MonoOperatorTests {
 
     @Test
     public void filter() {
-        Mono<String> notEmptyMono = Mono.just("hello world");
-        Mono<String> emptyMono = Mono.just("");
+        Mono<String> notEmptyStringMono = Mono.just("hello world");
+        Mono<String> emptyStringMono = Mono.just("");
 
         StepVerifier.create(
-            notEmptyMono.filter(String::isBlank)
+            notEmptyStringMono.filter(String::isBlank)
         )
             .verifyComplete();
 
         StepVerifier.create(
-            emptyMono.filter(String::isBlank)
+            emptyStringMono.filter(String::isBlank)
         )
             .expectNext("")
             .verifyComplete();

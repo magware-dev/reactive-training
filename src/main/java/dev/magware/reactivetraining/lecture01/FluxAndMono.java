@@ -12,24 +12,24 @@ public class FluxAndMono {
      * Returns the maximum integer of given integers
      */
     public Mono<Integer> max(Integer... integers) {
-        // TODO
-        return null;
+        return Flux.just(integers)
+            .reduce(Math::max);
     }
 
     /**
      * Returns just the ISBN numbers of given books
      */
     public Flux<String> isbn(Stream<Book> books) {
-        // TODO
-        return null;
+        return Flux.fromStream(books)
+            .map(Book::getIsbn);
     }
 
     /**
      * Returns only books where the title starts with a given prefix
      */
     public Flux<Book> titleStartsWith(Iterable<Book> books, String prefix) {
-        // TODO
-        return null;
+        return Flux.fromIterable(books)
+            .filter(book -> book.getTitle().startsWith(prefix));
     }
 
 }

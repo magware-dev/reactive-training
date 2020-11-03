@@ -8,11 +8,11 @@ import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
 @Configuration
-public class Lecture00Routes {
+public class Lecture00Router {
 
     private final Lecture00Handlers lecture00Handlers;
 
-    public Lecture00Routes(Lecture00Handlers lecture00Handlers) {
+    public Lecture00Router(Lecture00Handlers lecture00Handlers) {
         this.lecture00Handlers = lecture00Handlers;
     }
 

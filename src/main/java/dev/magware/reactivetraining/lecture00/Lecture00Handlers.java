@@ -23,4 +23,6 @@ public class Lecture00Handlers {
             .body(this.bookRepository.findAll(), Book.class);
     }
 
+    // TODO add findOne handler
+
 }

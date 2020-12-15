@@ -22,7 +22,7 @@ public class Lecture00Router {
             .route(
                 RequestPredicates.GET("/lecture00/findAll"),
                 this.lecture00Handlers::findAll
-            );
+            ); // TODO add route for /lecture00/findOne
     }
     
 }

@@ -1,7 +1,6 @@
 package dev.magware.reactivetraining.lecture02;
 
 import dev.magware.reactivetraining.model.BookRepository;
-import dev.magware.reactivetraining.openlibrary.OpenLibraryAPI;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.BodyInserters;

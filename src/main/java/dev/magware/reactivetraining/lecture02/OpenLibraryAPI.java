@@ -1,4 +1,4 @@
-package dev.magware.reactivetraining.openlibrary;
+package dev.magware.reactivetraining.lecture02;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

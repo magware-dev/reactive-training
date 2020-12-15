@@ -2,7 +2,7 @@ package dev.magware.reactivetraining;
 
 import dev.magware.reactivetraining.model.Book;
 import dev.magware.reactivetraining.model.BookRepository;
-import dev.magware.reactivetraining.openlibrary.OpenLibraryAPI;
+import dev.magware.reactivetraining.lecture02.OpenLibraryAPI;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import okhttp3.mockwebserver.RecordedRequest;

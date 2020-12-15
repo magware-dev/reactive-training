@@ -85,4 +85,20 @@ public class FluxStaticGeneratorTests {
             .verifyComplete();
     }
 
+    @Test
+    public void empty() {
+        Flux<Integer> emptyFlux = Flux.empty();
+
+        StepVerifier.create(emptyFlux)
+            .verifyComplete();
+    }
+
+    @Test
+    public void error() {
+        Flux<Integer> errorMono = Flux.error(new Exception("exception"));
+
+        StepVerifier.create(errorMono)
+            .verifyErrorMessage("exception");
+    }
+
 }

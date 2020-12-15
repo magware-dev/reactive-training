@@ -1,3 +1,6 @@
+openLibrary:
+  apiBaseUrl: "http://localhost:9999"
+
 server:
   port: 0
 

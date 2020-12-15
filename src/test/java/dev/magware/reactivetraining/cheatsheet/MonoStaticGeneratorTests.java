@@ -103,4 +103,20 @@ public class MonoStaticGeneratorTests {
             .verifyComplete();
     }
 
+    @Test
+    public void empty() {
+        Mono<Integer> emptyMono = Mono.empty();
+
+        StepVerifier.create(emptyMono)
+            .verifyComplete();
+    }
+
+    @Test
+    public void error() {
+        Mono<Integer> errorMono = Mono.error(new Exception("exception"));
+
+        StepVerifier.create(errorMono)
+            .verifyErrorMessage("exception");
+    }
+
 }

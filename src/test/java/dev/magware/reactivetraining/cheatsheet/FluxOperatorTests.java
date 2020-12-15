@@ -41,7 +41,44 @@ public class FluxOperatorTests {
         StepVerifier.create(filtered)
             .expectNext("hello", "world")
             .verifyComplete();
+    }
 
+    @Test
+    public void switchIfEmpty() {
+        Flux<String> notEmptyFlux = Flux.just("hello", "world");
+        Flux<String> emptyFlux = Flux.empty();
+
+        // test not empty
+        StepVerifier.create(
+            notEmptyFlux.switchIfEmpty(
+                Flux.error(new RuntimeException("empty flux"))
+            )
+        )
+            .expectNext("hello", "world")
+            .verifyComplete();
+
+        // test empty
+        StepVerifier.create(
+            emptyFlux.switchIfEmpty(
+                Flux.error(new RuntimeException("empty flux"))
+            )
+        )
+            .expectErrorMessage("empty flux")
+            .verify();
+    }
+
+    @Test
+    public void flatMap() {
+        Flux<String> stringFlux = Flux.just("hello", "world");
+        Flux<Integer> charFlux = stringFlux
+            .flatMap(
+                s -> Flux.fromStream(s.chars().boxed())
+            );
+
+        StepVerifier.create(charFlux)
+            .expectNext((int)'h', (int)'e', (int)'l', (int)'l', (int)'o')
+            .expectNext((int)'w', (int)'o', (int)'r', (int)'l', (int)'d')
+            .verifyComplete();
     }
 
 }

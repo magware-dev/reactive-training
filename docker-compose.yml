@@ -9,3 +9,12 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
+
+  localstack:
+    image: localstack/localstack:latest
+    environment:
+      SERVICES: s3
+      DEBUG: 1
+      EDGE_PORT: 9090
+    ports:
+      - "9090:9090"

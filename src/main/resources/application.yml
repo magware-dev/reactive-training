@@ -1,6 +1,12 @@
 openLibrary:
   apiBaseUrl: "https://openlibrary.org"
 
+s3:
+  accessKey: "accessKey"
+  secretKey: "secretKey"
+  endpoint: "http://localhost:9090"
+  bucket: "bucket"
+
 server:
   port: 8080
 

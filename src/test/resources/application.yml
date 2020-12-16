@@ -1,6 +1,12 @@
 openLibrary:
   apiBaseUrl: "http://localhost:9999"
 
+s3:
+  accessKey: "accessKey"
+  secretKey: "secretKey"
+  endpoint: "http://localhost:9090"
+  bucket: "test-bucket"
+
 server:
   port: 0
 

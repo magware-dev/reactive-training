@@ -57,7 +57,7 @@ public class Lecture03Handlers {
             if (!(exception.getCause() instanceof BucketAlreadyExistsException)) {
                 throw exception.getCause();
             }
-        };
+        }
     }
 
     public Mono<ServerResponse> list(ServerRequest request) {
@@ -126,13 +126,35 @@ public class Lecture03Handlers {
     }
 
     public Mono<ServerResponse> get(ServerRequest request) {
-        // TODO
-        return null;
+        return Mono.fromFuture(
+            this.client.getObject(
+                GetObjectRequest.builder()
+                    .bucket(this.bucket)
+                    .key(request.pathVariable("key"))
+                    .build(),
+                AsyncResponseTransformer.toBytes()
+            )
+        )
+            .onErrorResume(NoSuchKeyException.class, throwable -> Mono.empty())
+            .flatMap(this::parse)
+            .flatMap(
+                book -> ServerResponse.ok()
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body(BodyInserters.fromValue(book))
+            )
+            .switchIfEmpty(ServerResponse.notFound().build());
     }
 
     public Mono<ServerResponse> delete(ServerRequest request) {
-        // TODO
-        return null;
+        return Mono.fromFuture(
+            this.client.deleteObject(
+                DeleteObjectRequest.builder()
+                    .bucket(this.bucket)
+                    .key(request.pathVariable("key"))
+                    .build()
+            )
+        )
+            .flatMap(book -> ServerResponse.noContent().build());
     }
 
     private Mono<Book> parse(ResponseBytes<GetObjectResponse> response) {
